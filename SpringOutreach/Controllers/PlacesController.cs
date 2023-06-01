@@ -27,13 +27,14 @@ namespace SpringOutreach.Controllers
                 .Include(t => t.Contact)
                 .Include(t => t.Outreaches)
                 .ThenInclude(t => t.Status)
+                .Select(x => new Place
+                {
+                    Name = x.Name,
+                    City = x.City,
+                    Canton = x.Canton,
+                    Outreaches = new List<Outreach> { x.Outreaches.OrderByDescending(x => x.Year).FirstOrDefault() }
+                })
                 .ToListAsync();
-
-            //places = places.Select(x =>
-            //{
-            //    x.Outreaches = x.Outreaches.OrderBy(x => x.Year).Take(1);
-            //    return x;
-            //});
 
             //.OrderByDescending(OutreachYear => OutreachYear.Year)
             //.Take(1))
