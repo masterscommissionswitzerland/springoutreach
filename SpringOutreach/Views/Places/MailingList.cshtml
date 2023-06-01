@@ -1,0 +1,21 @@
+@model IEnumerable<SpringOutreach.Models.Place>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container center justify-content-middle">
+    @foreach (var item in Model)
+    {
+        @Html.DisplayFor(modelItem => item.Contact.Mail)
+        <br />
+    }
+    @foreach (var item in Model)
+    {
+        @foreach (var secContact in item.SecondaryContacts)
+        {
+            @Html.DisplayFor(modelItem => secContact.Mail)
+            <br />
+        }
+    }
+</div>

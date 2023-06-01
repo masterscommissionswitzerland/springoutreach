@@ -1,0 +1,21 @@
+@model SpringOutreach.ViewModels.OutreachViewModel
+
+@{
+    ViewData["Title"] = "Upload";
+}
+
+<h1>Upload a File to this Outreach</h1>
+
+<div class="container">
+    <form asp-action="Upload" enctype="multipart/form-data" id="uploadFile">
+        <div class="form-group">
+            <input asp-for="File" type="file" class="form-control" />
+        </div>
+        <input id="uploadFileInput" type="submit" value="Upload File" class="btn btn-outline-dark mt-2" form="uploadFile" formaction="@Url.Action("Upload")" />
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

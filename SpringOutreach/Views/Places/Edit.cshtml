@@ -1,0 +1,93 @@
+@model SpringOutreach.ViewModels.PlaceViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit the Place: @Model.Name</h1>
+<div class="container">
+    <form asp-action="Edit">
+        <div class="row">
+            <div class="col">
+                <h4>Place</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Canton" class="control-label"></label>
+                    <input asp-for="Canton" class="form-control" />
+                    <span asp-validation-for="Canton" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Adress" class="control-label"></label>
+                    <input asp-for="Adress" class="form-control" />
+                    <span asp-validation-for="Adress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SetPlaceType" class="control-label"></label>
+                    <select asp-for="PlaceTypeId"
+                            asp-items="@(new SelectList(Model.PlaceTypes, nameof(PlaceType.Id), nameof(PlaceType.Title)))" class="form-select">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PlaceConnection" class="control-label"></label>
+                    <textarea class="form-control" rows="2" asp-for="PlaceConnection"></textarea>
+                    <span asp-validation-for="PlaceConnection" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PlaceNote" class="control-label"></label>
+                    <textarea class="form-control" rows="2" asp-for="PlaceNote"></textarea>
+                    <span asp-validation-for="PlaceNote" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <h4>Main Contact</h4>
+                <hr />
+                <div class="form-group">
+                    <label asp-for="ContactName" class="control-label"></label>
+                    <input asp-for="ContactName" class="form-control" />
+                    <span asp-validation-for="ContactName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ContactMail" class="control-label"></label>
+                    <input asp-for="ContactMail" class="form-control" />
+                    <span asp-validation-for="ContactMail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ContactPhone" class="control-label"></label>
+                    <input asp-for="ContactPhone" class="form-control" />
+                    <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ResponsibleFor" class="control-label"></label>
+                    <input asp-for="ResponsibleFor" class="form-control" />
+                    <span asp-validation-for="ResponsibleFor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Position" class="control-label"></label>
+                    <select asp-for="PositionId"
+                            asp-items="@(new SelectList(Model.Position, nameof(Position.Id), nameof(Position.Title)))" class="form-select">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-dark">Back to List</a>
+                <input type="submit" value="Save" class="btn btn-outline-dark" />
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

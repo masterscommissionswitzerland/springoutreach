@@ -1,0 +1,419 @@
+@model SpringOutreach.ViewModels.PlaceViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col ps-0">
+            <h1>
+                @Html.DisplayFor(model => model.Name)
+            </h1>
+        </div>  
+        <div class="col pe-0 d-flex align-items-center">
+            <p class="mt-auto">
+                Status of the outreach @Html.DisplayFor(model => model.CurrentOutreach.Year) - <p class="mt-auto ms-1 fw-bold">@Html.DisplayFor(model => Model.CurrentOutreach.Status.Name)</p>
+            </p>
+            <p class="ms-auto mt-auto mb-auto">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-dark">Edit</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.City)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.City)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Canton)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Canton)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Adress)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Adress)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SetPlaceType)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.SetPlaceType)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlaceConnection)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PlaceConnection)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlaceNote)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PlaceNote)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlaceLinks)
+                        </th>
+                        <td class="ms-auto text-end">
+                            <a asp-controller="PlaceLinks" asp-action="Create" asp-route-id="@Model.Id" class="fa-solid fa-plus text-dark text-decoration-none"></a>
+                        </td>
+                    </tr>
+                    @foreach (var item in Model.PlaceLinks)
+                    {
+                        <tr>
+                            <th>
+                                <a href="@item.Link" target="_blank" class="fw-normal ms-2">@item.Link</a>
+                            </th>
+                            <td class="ms-auto text-end">
+                                <a asp-action="CleanDelete" asp-controller="PlaceLinks" asp-route-id="@item.Id" asp-route-placeId="@item.PlaceId" class="fa-regular fa-trash-can text-dark"></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+@*Contactsection*@
+
+        <div class="col">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Contact)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Contact.Name)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Contact.Position)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Contact.Position.Title)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Contact.Mail)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Contact.Mail)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Contact.Phone)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Contact.Phone)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Contact.ResponsibleFor)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Contact.ResponsibleFor)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SecondaryContacts)
+                        </th>
+                        <td class="ms-auto text-end">
+                            <a asp-controller="SecondaryContacts" asp-action="Create" asp-route-id="@Model.Id" class="fa-solid fa-plus text-dark text-decoration-none"></a>
+                        </td>
+                    </tr>
+
+@*SecondaryContactSection*@
+
+                    @foreach (var item in Model.SecondaryContacts)
+                    {
+                        <tr>
+                            <th>
+                                <div class="row">
+                                    <div class="col-auto fw-normal">
+                                        <a asp-action="CleanDelete" asp-controller="SecondaryContacts" asp-route-id="@item.Id" asp-route-placeId="@item.PlaceId" class="fa-regular fa-trash-can text-dark"></a>
+                                        @item.Name
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="line-hight fa-solid fa-arrow-right fa-lg text-dark align-middle text-decoration-none" data-bs-toggle="collapse" href="#@item.StringId" role="button" aria-expanded="false" aria-controls="collapseExample"></a>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="w-auto">
+                                <div class="collapse" id="@item.StringId">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <td>
+                                                    @item.Name
+                                                    <a asp-action="Edit" asp-controller="SecondaryContacts" asp-route-id="@item.Id" asp-route-placeId="@item.PlaceId" class="float-end fa-regular fa-edit text-dark"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Position
+                                                </th>
+                                                <td>
+                                                    @if (item.SecondaryContactPosition != null)
+                                                    {
+                                                        @item.SecondaryContactPosition.Title
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Mail
+                                                </th>
+                                                <td>
+                                                    @item.Mail
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Phone
+                                                </th>
+                                                <td>
+                                                    @item.Phone
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Responsible For
+                                                </th>
+                                                <td>
+                                                    @item.ResponsibleFor
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+@*Outreachsection*@
+
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        @foreach (var item in Model.Outreaches)
+        {
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-dark" id="@item.Year" data-bs-toggle="tab" data-bs-target="#@item.StringId" type="button" role="tab" aria-controls="home" aria-selected="false">@item.Year</button>
+            </li>
+        }
+        <li class="nav-item" role="presentation">
+            <a asp-controller="Outreaches" asp-action="Create" asp-route-id="@Model.Id" class="nav-link text-dark">Add new Outreach</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        @foreach (var item in Model.Outreaches)
+        {
+            <div class="tab-pane fade" id="@item.StringId" role="tabpanel" aria-labelledby="@item.StringId">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            Main Contact
+                                        </th>
+                                        <td>
+                                            @item.InternContact
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Responsible for this outreach
+                                        </th>
+                                        <td>
+                                            @item.InternResponsible
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(x => item.StartDate) - @Html.DisplayFor(x => item.EndDate)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Notes
+                                        </th>
+                                        <td>
+                                            @item.Note
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table class="table">
+                                <tr>
+                                    <th></th>
+                                    <td class="text-end">
+                                        <a asp-controller="Outreaches" asp-action="Upload" asp-route-id="@item.Id" class="btn btn-outline-dark text-right">Upload File</a>
+                                        <a asp-controller="Outreaches" asp-action="Edit" asp-route-id="@item.Id" asp-route-placeId="@item.PlaceId" class="btn btn-outline-dark text-right">Edit Outreach</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table">
+                                @if (item.PdfFile != null)
+                                {
+                                    @foreach (var file in item.PdfFile)
+                                    {
+                                        <tr>
+
+                                            <th>
+                                                <a class="text-dark text-decoration-none" asp-controller="Outreaches" asp-action="Download" asp-route-fileid="@file.Id">@file.FileName</a>
+                                            </th>
+                                            <td>
+                                                <a class="fa-regular fa-eye text-dark float-end text-decoration-none ms-1" asp-controller="Outreaches" asp-action="Content" asp-route-fileid="@file.Id"></a>
+                                                <a class="fa-regular fa-trash-can text-dark float-end text-decoration-none" asp-controller="Outreaches" asp-action="DeletePdf" asp-route-id="@Model.Id" asp-route-fileid="@file.Id"></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+
+                    @*Eventsection*@
+
+                    <div class="container">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            @foreach (var newEvent in item.Events)
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link text-dark" id="@newEvent.Title" data-bs-toggle="tab" data-bs-target="#@newEvent.StringId" type="button" role="tab" aria-controls="home" aria-selected="false">@newEvent.Title</button>
+                                </li>
+                            }
+                            <li class="nav-item" role="presentation">
+                                <a asp-controller="Events" asp-action="Create" asp-route-id="@item.Id" asp-route-placeId="@item.PlaceId" class="nav-link text-dark">Add new Event</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            @foreach (var newEvent in item.Events)
+                            {
+                                <div class="tab-pane fade" id="@newEvent.StringId" role="tabpanel" aria-labelledby="@newEvent.StringId">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                Date
+                                                            </th>
+                                                            <td>
+                                                                @Html.DisplayFor(x => newEvent.Date)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Time
+                                                            </th>
+                                                            <td>
+                                                                @Html.DisplayFor(x => newEvent.Time)
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Contact for this event
+                                                            </th>
+                                                            <td>
+                                                                @newEvent.Contact
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Input
+                                                            </th>
+                                                            @if (newEvent.IsInputRequired)
+                                                            {
+                                                                <td>
+                                                                    Ja
+                                                                </td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>
+                                                                    Nein
+                                                                </td>
+                                                            }
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Notes
+                                                            </th>
+                                                            <td>
+                                                                @newEvent.Note
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-6">
+                                                <table class="table">
+                                                    <tr>
+                                                        <th></th>
+                                                        <td class="text-end">
+                                                            <a asp-controller="Events" asp-action="Edit" asp-route-id="@newEvent.Id" asp-route-placeId="@item.PlaceId" class="btn btn-outline-dark text-right">Edit Event</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        }
+    </div>
+</div>

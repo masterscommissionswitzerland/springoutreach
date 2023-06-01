@@ -1,0 +1,65 @@
+@model SpringOutreach.ViewModels.OutreachViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add new Outreach to this Place: @Html.DisplayFor(model => model.Place.Name)</h1>
+
+<div class="container">
+    <form asp-action="Create">
+        <div class="row">
+            <div class="col">
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="InternContact" class="control-label"></label>
+                            <input asp-for="InternContact" class="form-control" />
+                            <span asp-validation-for="InternContact" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="InternResponsible" class="control-label"></label>
+                            <input asp-for="InternResponsible" class="form-control" />
+                            <span asp-validation-for="InternResponsible" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Year" class="control-label"></label>
+                            <input asp-for="Year" class="form-control" />
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="StartDate" class="control-label"></label>
+                            <input asp-for="StartDate" class="form-control" />
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EndDate" class="control-label"></label>
+                            <input asp-for="EndDate" class="form-control" />
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Statuses" class="control-label"></label>
+                            <select asp-for="StatusId"
+                                    asp-items="@(new SelectList(Model.Statuses, nameof(Status.Id), nameof(Status.Name)))" class="form-select">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Note" class="control-label"></label>
+                            <input asp-for="Note" class="form-control" />
+                            <span asp-validation-for="Note" class="text-danger"></span>
+                            <div class="form-group mt-2">
+                                <input type="submit" value="Create" class="btn btn-outline-dark" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
