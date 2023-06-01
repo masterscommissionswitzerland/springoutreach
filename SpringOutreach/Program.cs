@@ -1,4 +1,5 @@
 // <ms_docref_import_types>
+using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,16 @@ builder.Services.AddRazorPages().AddMvcOptions(options =>
 
 // <ms_docref_enable_authz_capabilities>
 WebApplication app = builder.Build();
+
+// Migrate latest database changes during startup
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<ApplicationDbContext>();
+
+    // Here is the migration executed
+    dbContext.Database.Migrate();
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
