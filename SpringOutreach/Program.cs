@@ -13,6 +13,12 @@ using SpringOutreach.Data;
 var builder = WebApplication.CreateBuilder(args);
 IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
+// Retrieve the connection string
+string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
+
+// Load configuration from Azure App Configuration
+builder.Configuration.AddAzureAppConfiguration(connectionString);
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
@@ -21,13 +27,6 @@ builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration,
         .AddDownstreamWebApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
         .AddInMemoryTokenCaches();
 // </ms_docref_add_msal>
-
-// Retrieve the connection string
-string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
-
-// Load configuration from Azure App Configuration
-builder.Configuration.AddAzureAppConfiguration(connectionString);
-
 
 // <ms_docref_add_default_controller_for_sign-in-out>
 builder.Services.AddRazorPages().AddMvcOptions(options =>
