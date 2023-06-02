@@ -32,6 +32,8 @@ namespace SpringOutreach.Controllers
                     Name = x.Name,
                     City = x.City,
                     Canton = x.Canton,
+                    Contact = x.Contact,
+                    Id = x.Id,
                     Outreaches = new List<Outreach> { x.Outreaches.OrderByDescending(x => x.Year).FirstOrDefault() }
                 })
                 .ToListAsync();
@@ -52,6 +54,23 @@ namespace SpringOutreach.Controllers
                 .ToListAsync();
 
             return View(place);
+        }
+
+        // GET: Places/CurrentOutreaches
+        public async Task<IActionResult> CurrentOutreaches()
+        {
+            var places = await _context.Place
+                            .Include(t => t.Outreaches)
+                            .ThenInclude(t => t.Status)
+                            .Select(x => new Place
+                            {
+                                Name = x.Name,
+                                Id = x.Id,
+                                Outreaches = new List<Outreach> { x.Outreaches.OrderByDescending(x => x.Year).FirstOrDefault() }
+                            })
+                            .ToListAsync();
+
+            return View(places);
         }
 
         // GET: Places/Details/5

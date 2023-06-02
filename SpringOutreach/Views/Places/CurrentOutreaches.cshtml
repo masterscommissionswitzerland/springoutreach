@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SpringOutreach.Models.Place>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container center justify-content-middle">
+    @foreach (var item in Model)
+    {
+        @if (item.Outreaches != null)
+        {
+            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Outreaches.First().Year)
+            @Html.DisplayFor(modelItem => item.Outreaches.First().Status.Name)
+        }
+        <br />
+    }
+</div>

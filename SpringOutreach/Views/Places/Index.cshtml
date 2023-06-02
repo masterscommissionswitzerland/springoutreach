@@ -78,7 +78,7 @@
                         @foreach (var status in item.Outreaches)
                         {
                             <a asp-action="Details" asp-route-id="@item.Id">
-                                @Html.DisplayFor(modelItem => status.Status)
+                                @Html.DisplayFor(modelItem => status.Status.Name)
                             </a>
                         }
                     </td>

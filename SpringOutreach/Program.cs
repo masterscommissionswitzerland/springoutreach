@@ -22,6 +22,13 @@ builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration,
         .AddInMemoryTokenCaches();
 // </ms_docref_add_msal>
 
+// Retrieve the connection string
+string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
+
+// Load configuration from Azure App Configuration
+builder.Configuration.AddAzureAppConfiguration(connectionString);
+
+
 // <ms_docref_add_default_controller_for_sign-in-out>
 builder.Services.AddRazorPages().AddMvcOptions(options =>
 {
