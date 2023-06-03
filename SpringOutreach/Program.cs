@@ -11,7 +11,6 @@ using SpringOutreach.Data;
 // <ms_docref_add_msal>
 
 var builder = WebApplication.CreateBuilder(args);
-IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
 // Retrieve the connection string
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
