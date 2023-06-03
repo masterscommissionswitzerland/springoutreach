@@ -11,6 +11,7 @@ using SpringOutreach.Data;
 // <ms_docref_add_msal>
 
 var builder = WebApplication.CreateBuilder(args);
+IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
 // Retrieve the connection string
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
@@ -19,7 +20,7 @@ string connectionString = builder.Configuration.GetConnectionString("Application
 builder.Configuration.AddAzureAppConfiguration(connectionString);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext"))); 
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
