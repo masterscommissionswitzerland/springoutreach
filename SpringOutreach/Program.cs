@@ -20,7 +20,7 @@ string connectionString = builder.Configuration.GetConnectionString("Application
 builder.Configuration.AddAzureAppConfiguration(connectionString);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
+    options.UseMySQL(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
