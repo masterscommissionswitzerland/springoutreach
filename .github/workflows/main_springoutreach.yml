@@ -28,9 +28,6 @@ jobs:
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-      - name: dotnet install ef
-        run: dotnet tool install -g dotnet-ef
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -56,5 +53,5 @@ jobs:
         with:
           app-name: 'springoutreach'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5FB5BECE8688498396913BF5323FA2D0 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D464365DA11D457FA27A7867412F82C4 }}
           package: .
