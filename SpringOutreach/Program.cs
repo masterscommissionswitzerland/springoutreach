@@ -13,7 +13,7 @@ using SpringOutreach.Data;
 var builder = WebApplication.CreateBuilder(args);
 IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
-// Retrieve the connection string
+// Retrieve the connection string 
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
 
 // Load configuration from Azure App Configuration
