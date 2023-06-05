@@ -22,23 +22,10 @@ string connectionString = builder.Configuration.GetConnectionString("Application
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
-//builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
-//    .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
-//        .AddDownstreamWebApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
-//        .AddInMemoryTokenCaches();
-
 // <ms_docref_add_default_controller_for_sign-in-out>
 
 builder.Services.AddRazorPages();
-
-//builder.Services.AddRazorPages().AddMvcOptions(options =>
-//{
-//    var policy = new AuthorizationPolicyBuilder()
-//                  .RequireAuthenticatedUser()
-//                  .Build();
-//    options.Filters.Add(new AuthorizeFilter(policy));
-//}).AddMicrosoftIdentityUI();
-// </ms_docref_add_default_controller_for_sign-in-out>
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // <ms_docref_enable_authz_capabilities>
 WebApplication app = builder.Build();
