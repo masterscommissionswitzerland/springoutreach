@@ -11,7 +11,7 @@ using SpringOutreach.Data;
 namespace SpringOutreach.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230605092550_Init")]
+    [Migration("20230605095244_Init")]
     partial class Init
     {
         /// <inheritdoc />
