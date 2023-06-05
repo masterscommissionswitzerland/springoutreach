@@ -17,7 +17,7 @@ IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
 
 // Load configuration from Azure App Configuration
-builder.Configuration.AddAzureAppConfiguration(connectionString);
+//builder.Configuration.AddAzureAppConfiguration(connectionString);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));

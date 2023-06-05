@@ -3,6 +3,7 @@ using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using SpringOutreach.Models;
 
 namespace SpringOutreach.Data;
@@ -31,8 +32,8 @@ public class ApplicationDbContext : DbContext
         builder.Entity<Place>().HasOne(x => x.Contact).WithOne(x => x.Place).HasForeignKey<Contact>(x => x.PlaceId);
 
         builder.Entity<Place>().HasData(
-            new Place { Id = 1, Name = "Jahu Thun", City = "Thun", Canton = "Bern", Adress = "Burgfeldweg 13", PlaceTypeId = 1},
-            new Place { Id = 2, Name = "Oasis Zug", City = "Zug", Canton = "Zug", Adress = "Klosterweg 12" , PlaceTypeId = 2}
+            new Place { Id = 1, Name = "Jahu Thun", City = "Thun", Canton = "Bern", Adress = "Burgfeldweg 13", PlaceTypeId = 1 },
+            new Place { Id = 2, Name = "Oasis Zug", City = "Zug", Canton = "Zug", Adress = "Klosterweg 12", PlaceTypeId = 2 }
             );
 
         builder.Entity<Models.PlaceType>().HasData(
@@ -46,7 +47,7 @@ public class ApplicationDbContext : DbContext
             );
 
         builder.Entity<Models.SecondaryContact>().HasData(
-            new SecondaryContact { Id = 1, Name = "Micha Wenger", Mail = "micha.wenger@jahu.info", Phone = "078 324 23 02", SecondaryContactPositionId = 1, PlaceId = 1, StringId = "stringId4"}
+            new SecondaryContact { Id = 1, Name = "Micha Wenger", Mail = "micha.wenger@jahu.info", Phone = "078 324 23 02", SecondaryContactPositionId = 1, PlaceId = 1, StringId = "stringId4" }
             );
 
         builder.Entity<Models.Position>().HasData(
@@ -55,16 +56,16 @@ public class ApplicationDbContext : DbContext
             );
 
         builder.Entity<Models.Outreach>().HasData(
-            new Outreach { Id = 1, InternContact = "Nicola Beck", InternResponsible = "Eleosa Zürcher", Year = 2021, Note = "Wir haben das und das gemacht.", StringId = "stringId", PlaceId = 1, StatusId = 1},
-            new Outreach { Id = 2, InternContact = "Micha Wenger", InternResponsible = "Elina Josi", Year = 2022, Note = "Diese Jahr haben wir etwas anders gemacht.", StringId = "stringId1", PlaceId = 1, StatusId = 2},
-            new Outreach { Id = 3, InternContact = "Janis Volz", InternResponsible = "Sophia Krebs", Year = 2021, Note = "Hier haben wir das getan.", StringId = "stringId2", PlaceId = 2, StatusId = 2},
-            new Outreach { Id = 4, InternContact = "Simon Schmidt", InternResponsible = "Marlene Roth", Year = 2022, Note = "Und im nächsten Jahr das", StringId = "stringId3", PlaceId = 2, StatusId = 3}
+            new Outreach { Id = 1, InternContact = "Nicola Beck", InternResponsible = "Eleosa Zürcher", Year = 2021, Note = "Wir haben das und das gemacht.", StringId = "stringId", PlaceId = 1, StatusId = 1 },
+            new Outreach { Id = 2, InternContact = "Micha Wenger", InternResponsible = "Elina Josi", Year = 2022, Note = "Diese Jahr haben wir etwas anders gemacht.", StringId = "stringId1", PlaceId = 1, StatusId = 2 },
+            new Outreach { Id = 3, InternContact = "Janis Volz", InternResponsible = "Sophia Krebs", Year = 2021, Note = "Hier haben wir das getan.", StringId = "stringId2", PlaceId = 2, StatusId = 2 },
+            new Outreach { Id = 4, InternContact = "Simon Schmidt", InternResponsible = "Marlene Roth", Year = 2022, Note = "Und im nächsten Jahr das", StringId = "stringId3", PlaceId = 2, StatusId = 3 }
             );
 
         builder.Entity<Models.Status>().HasData(
-            new Status { Id = 1, Name = "Open"},
+            new Status { Id = 1, Name = "Open" },
             new Status { Id = 2, Name = "Asked" },
-            new Status { Id = 3, Name = "Accepted"}
+            new Status { Id = 3, Name = "Accepted" }
             );
 
         builder.Entity<Models.Event>().HasData(
