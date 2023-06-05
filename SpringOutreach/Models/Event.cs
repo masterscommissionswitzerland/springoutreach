@@ -26,7 +26,7 @@ namespace SpringOutreach.Models
         public string? Time { get; set; }
 
         [Display(Name = "Input Required")]
-        public bool IsInputRequired { get; set; }
+        public string? IsInputRequired { get; set; }
 	}
 }
 
