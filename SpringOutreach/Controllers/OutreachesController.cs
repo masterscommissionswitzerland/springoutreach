@@ -8,7 +8,7 @@ using SpringOutreach.ViewModels;
 
 namespace SpringOutreach.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class OutreachesController : Controller
     {
         private readonly ApplicationDbContext _context;

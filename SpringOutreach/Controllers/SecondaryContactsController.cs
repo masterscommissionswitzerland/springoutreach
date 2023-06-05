@@ -12,7 +12,7 @@ using SpringOutreach.ViewModels;
 
 namespace SpringOutreach.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SecondaryContactsController : Controller
     {
         private readonly ApplicationDbContext _context;

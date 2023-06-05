@@ -9,7 +9,7 @@ using SpringOutreach.ViewModels;
 
 namespace SpringOutreach.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class PlacesController : Controller
     {
         private readonly ApplicationDbContext _context;
