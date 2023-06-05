@@ -20,12 +20,12 @@ string connectionString = builder.Configuration.GetConnectionString("Application
 //builder.Configuration.AddAzureAppConfiguration(connectionString);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
-//builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
-//    .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
-//        .AddDownstreamWebApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
-//        .AddInMemoryTokenCaches();
+builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AzureAd")
+    .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
+        .AddDownstreamWebApi("DownstreamApi", builder.Configuration.GetSection("DownstreamApi"))
+        .AddInMemoryTokenCaches();
 
 // <ms_docref_add_default_controller_for_sign-in-out>
 builder.Services.AddRazorPages().AddMvcOptions(options =>
@@ -55,8 +55,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.UseAuthentication();
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 // </ms_docref_enable_authz_capabilities>
 
 app.MapControllerRoute(
