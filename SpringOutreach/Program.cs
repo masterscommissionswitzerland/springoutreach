@@ -25,7 +25,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // <ms_docref_add_default_controller_for_sign-in-out>
 
 builder.Services.AddRazorPages();
-//AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // <ms_docref_enable_authz_capabilities>
 WebApplication app = builder.Build();
