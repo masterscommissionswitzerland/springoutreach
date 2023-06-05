@@ -216,7 +216,7 @@ namespace SpringOutreach.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FileBytes = table.Column<byte[]>(type: "BLOB", nullable: true),
+                    //FileBytes = table.Column<byte[]>(type: "BLOB", nullable: true),
                     FileName = table.Column<string>(type: "TEXT", nullable: true),
                     OutreachId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
