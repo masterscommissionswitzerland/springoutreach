@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'springoutreach'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C5C841CE75E943268F7626D00BD642F5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C48428D0FAAB416D9553F66E6D611747 }}
           package: .
