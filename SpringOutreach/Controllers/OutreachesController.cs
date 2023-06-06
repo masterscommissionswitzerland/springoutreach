@@ -255,25 +255,8 @@ namespace SpringOutreach.Controllers
                     OutreachId = vm.Id
                 };
 
-                //    var tempPath = Path.GetTempPath();
-
-                //var temporaryPdf = RandomString(8);
-                //temporaryPdf += ".pdf";
-
-                //await using var stream = new MemoryStream();
-                //await vm.File.CopyToAsync(stream);
-
-                //var path = "/private" + tempPath + temporaryPdf;
-
-                //await System.IO.File.WriteAllBytesAsync(path, stream.ToArray());
-
-                //var pdfBytes = await System.IO.File.ReadAllBytesAsync(path);
-
-
                 await _context.PdfFile.AddAsync(pdfFile);
                 await _context.SaveChangesAsync();
-
-                //System.IO.File.Delete(tempPath + temporaryPdf);
 
                 return RedirectToAction("Index", "Places");
         }

@@ -17,7 +17,7 @@ IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
 
 // Load configuration from Azure App Configuration
-//builder.Configuration.AddAzureAppConfiguration(connectionString);
+builder.Configuration.AddAzureAppConfiguration(connectionString);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
@@ -31,14 +31,14 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 WebApplication app = builder.Build();
 
 // Migrate latest database changes during startup
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider
-        .GetRequiredService<ApplicationDbContext>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider
+//        .GetRequiredService<ApplicationDbContext>();
 
-    // Here is the migration executed
-    dbContext.Database.Migrate();
-}
+//    // Here is the migration executed
+//    dbContext.Database.Migrate();
+//}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
