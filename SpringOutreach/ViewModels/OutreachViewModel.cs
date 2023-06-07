@@ -37,9 +37,11 @@ namespace SpringOutreach.ViewModels
 
 		public Outreach? Outreach { get; set; }
 
-        [DataType(DataType.Date)]
+		[Display(Name = "Start Date")]
+		[DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
 
+        [Display(Name = "End Date")]
         [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 

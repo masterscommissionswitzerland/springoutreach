@@ -5,24 +5,24 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
+using SpringOutreach.Controllers;
 using SpringOutreach.Data;
+using Microsoft.Extensions.Configuration;
 // </ms_docref_import_types>
 
 // <ms_docref_add_msal>
 
+
 var builder = WebApplication.CreateBuilder(args);
 IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
-// Retrieve the connection string 
+// Retrieve the connection string
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
-
-// Load configuration from Azure App Configuration
-builder.Configuration.AddAzureAppConfiguration(connectionString);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
-// <ms_docref_add_default_controller_for_sign-in-out>
+// <ms_docrefv_add_default_controller_for_sign-in-out>
 
 builder.Services.AddRazorPages();
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);

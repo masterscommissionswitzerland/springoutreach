@@ -13,8 +13,12 @@
         </div>  
         <div class="col pe-0 d-flex align-items-center">
             <p class="mt-auto">
-                Status of the outreach @Html.DisplayFor(model => model.CurrentOutreach.Year) - <p class="mt-auto ms-1 fw-bold">@Html.DisplayFor(model => Model.CurrentOutreach.Status.Name)</p>
+                Status of the outreach @Html.DisplayFor(model => model.CurrentOutreach.Year) -
             </p>
+            <p class="mt-auto ms-1 fw-bold">
+                @Html.DisplayFor(model => Model.CurrentOutreach.Status.Name)
+            </p>
+            <a asp-action="Edit" asp-controller="Outreaches" asp-route-id="@Model.CurrentOutreach.Id" asp-route-placeId="@Model.Id" class="fa-regular fa-pen-to-square text-dark ms-2"></a>
             <p class="ms-auto mt-auto mb-auto">
                 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-dark">Edit</a>
             </p>
