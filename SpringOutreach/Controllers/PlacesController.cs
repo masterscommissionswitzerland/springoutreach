@@ -60,15 +60,15 @@ namespace SpringOutreach.Controllers
         public async Task<IActionResult> CurrentOutreaches()
         {
             var places = await _context.Place
-                            .Include(t => t.Outreaches)
-                            .ThenInclude(t => t.Status)
-                            .Select(x => new Place
-                            {
-                                Name = x.Name,
-                                Id = x.Id,
-                                Outreaches = new List<Outreach> { x.Outreaches.OrderByDescending(x => x.Year).FirstOrDefault() }
-                            })
-                            .ToListAsync();
+                .Include(t => t.Outreaches)
+                .ThenInclude(t => t.Status)
+                .Select(x => new Place
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    Outreaches = new List<Outreach> { x.Outreaches.OrderByDescending(x => x.Year).FirstOrDefault() }
+                })
+                .ToListAsync();
 
             return View(places);
         }
