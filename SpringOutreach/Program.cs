@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
 
 // Retrieve the connection string 
-string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
+string connectionString = builder.Configuration.GetConnectionString("POSTGRESQLCONNSTR_ApplicationDbContext");
 
 // Load configuration from Azure App Configuration
 builder.Configuration.AddAzureAppConfiguration(connectionString);
