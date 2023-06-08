@@ -27,7 +27,8 @@ namespace SpringOutreach.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Event
-                .Include(t => t.Outreach);
+                .Include(t => t.Outreach)
+                .ThenInclude(t => t.Place);
 
             return View(await applicationDbContext.ToListAsync());
         }
@@ -141,7 +142,6 @@ namespace SpringOutreach.Controllers
                     newEvent.Contact = vm.Contact;
                     newEvent.Time = vm.Time;
                     newEvent.IsInputRequired = vm.IsInputRequired;
-
                     _context.Update(newEvent);
 
                     await _context.SaveChangesAsync();
@@ -193,7 +193,7 @@ namespace SpringOutreach.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Places");
         }
 
         private bool EventExists(int? id)

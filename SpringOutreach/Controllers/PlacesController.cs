@@ -56,6 +56,17 @@ namespace SpringOutreach.Controllers
             return View(place);
         }
 
+        // GET: SecondaryContacts/AllContacts/
+        public async Task<IActionResult> AllContacts()
+        {
+            var place = await _context.Place
+                .Include(t => t.Contact)
+                .Include(t => t.SecondaryContacts)
+                .ToListAsync();
+
+            return View(place);
+        }
+
         // GET: Places/CurrentOutreaches
         public async Task<IActionResult> CurrentOutreaches()
         {
@@ -131,8 +142,10 @@ namespace SpringOutreach.Controllers
             var vm = new PlaceViewModel()
             {
                 PlaceTypes = _context.Type
+                .OrderBy(x => x.Id)
                 .ToList(),
                 Position = _context.Position
+                .OrderBy(x => x.Id)
                 .ToList(),
             };
             return View(vm);

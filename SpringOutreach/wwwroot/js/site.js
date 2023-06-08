@@ -13,5 +13,5 @@ $(document).ready(function () {
         {
             orderable: false, targets: "no-sort"
         }]
-});
+    });
 });

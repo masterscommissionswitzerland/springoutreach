@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SpringOutreach.Models.Place>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Contacts</h1>
+
+<table id="mainTable" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact.Place.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact.Phone)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="index_td_block">
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        @Html.DisplayFor(modelItem => item.Contact.Name)
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        @Html.DisplayFor(modelItem => item.Contact.Place.Name)
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        @Html.DisplayFor(modelItem => item.Contact.Mail)
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        @Html.DisplayFor(modelItem => item.Contact.Phone)
+                    </a>
+                </td>
+            </tr>
+        }
+        @foreach (var item in Model)
+        {
+            @foreach (var secContact in item.SecondaryContacts)
+            {
+                <tr id="index_td_block">
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => secContact.Name)
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => secContact.Place.Name)
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => secContact.Mail)
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => secContact.Phone)
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

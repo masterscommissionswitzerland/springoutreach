@@ -47,6 +47,7 @@
             <div class="form-group mt-2">
                 <a class="btn btn-outline-dark" asp-action="Details" asp-controller="Places" asp-route-id="@Model.PlaceId">Back</a>
                 <input type="submit" value="Save" asp-route-placeId="@Model.PlaceId" class="btn btn-outline-dark" />
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger float-md-end">Delete Event</a>
             </div>
         </form>
     </div>

@@ -103,6 +103,7 @@ namespace SpringOutreach.Controllers
 
             var vm = new OutreachViewModel()
             {
+                Id = outreach.Id,
                 Place = _context.Place.FirstOrDefault(t => t.Id == placeId),
                 PlaceId = placeId,
                 InternContact = outreach.InternContact,
@@ -163,7 +164,7 @@ namespace SpringOutreach.Controllers
         }
 
         // GET: Outreaches/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? placeId)
         {
             if (id == null || _context.Outreach == null)
             {
@@ -190,14 +191,17 @@ namespace SpringOutreach.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.OutreachYear'  is null.");
             }
-            var outreach = await _context.Outreach.FindAsync(id);
+            var outreach = await _context.Outreach
+                .Include(o => o.Place)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (outreach != null)
             {
                 _context.Outreach.Remove(outreach);
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Places", new { id = outreach.Place.Id });
         }
 
         private bool OutreachExists(int id)

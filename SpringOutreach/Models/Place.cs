@@ -11,7 +11,7 @@ namespace SpringOutreach.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Place")]
+        [Display(Name = "Institution Name")]
         public string? Name { get; set; }
 
         public string? City { get; set; }
