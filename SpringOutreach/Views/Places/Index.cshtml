@@ -39,7 +39,7 @@
                 <th>
                     Status
                 </th>
-                <th></th>
+                <th class="no-sort"></th>
             </tr>
         </thead>
         <tbody>
@@ -82,8 +82,8 @@
                             </a>
                         }
                     </td>
-                    <td id="index_td" class="text-center no-sort">
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="fa-regular fa-pen-to-square text-dark me-2"></a>
+                    <td id="index_td" class="no-sort">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="fa-regular fa-pen-to-square text-dark"></a>
                     </td>
                 </tr>
             }

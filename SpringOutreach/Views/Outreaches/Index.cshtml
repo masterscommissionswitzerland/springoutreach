@@ -21,7 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Year)
             </th>
-            <th></th>
+            <th class="no-sort"></th>
         </tr>
     </thead>
     <tbody>
@@ -48,8 +48,8 @@
                         @Html.DisplayFor(modelItem => item.Year)
                     </a>
                 </td>
-                <td class="text-right no-sort">
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="fa-regular fa-pen-to-square text-dark me-2"></a>
+                <td class="no-sort">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="fa-regular fa-pen-to-square text-dark"></a>
                 </td>
             </tr>
         }

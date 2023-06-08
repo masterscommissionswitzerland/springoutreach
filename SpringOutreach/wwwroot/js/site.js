@@ -8,10 +8,11 @@ $(document).ready(function () {
     $('#mainTable').DataTable({
     "language": {
         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json"
-    },
-    "paging": false, "info": false, "search": true, "ordering": true, columnDefs: [
-        {
-            orderable: false, targets: "no-sort"
-        }]
+        },
+        columnDefs: [
+            {
+                orderable: false, targets: "no-sort"
+            }],
+    "paging": false, "info": false, "search": true, "ordering": true, 
     });
 });
