@@ -27,22 +27,29 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="index_td_block">
                 <td>
-                    @Html.DisplayFor(modelItem => item.Place.Name)
+                    <a asp-controller="Places" asp-action="Details" asp-route-id="@item.PlaceId">
+                        @Html.DisplayFor(modelItem => item.Place.Name)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.InternContact)
+                    <a asp-controller="Places" asp-action="Details" asp-route-id="@item.PlaceId">
+                        @Html.DisplayFor(modelItem => item.InternContact)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.InternResponsible)
+                    <a asp-controller="Places" asp-action="Details" asp-route-id="@item.PlaceId">
+                        @Html.DisplayFor(modelItem => item.InternResponsible)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Year)
+                    <a asp-controller="Places" asp-action="Details" asp-route-id="@item.PlaceId">
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </a>
                 </td>
                 <td class="text-right no-sort">
                     <a asp-action="Edit" asp-route-id="@item.Id" class="fa-regular fa-pen-to-square text-dark me-2"></a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="fa-regular fa-trash-can text-dark me-2"></a>
                 </td>
             </tr>
         }

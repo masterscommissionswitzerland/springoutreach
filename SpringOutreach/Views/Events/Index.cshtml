@@ -23,6 +23,12 @@
                     @Html.DisplayNameFor(model => model.Outreach.Place.Name)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Outreach.Year)
                 </th>
             </tr>
@@ -39,6 +45,16 @@
                     <td>
                         <a asp-controller="Places" asp-action="Details" asp-route-id="@item.Outreach.Place.Id">
                             @Html.DisplayFor(modelItem => item.Outreach.Place.Name)
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Places" asp-action="Details" asp-route-id="@item.Outreach.Place.Id">
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Places" asp-action="Details" asp-route-id="@item.Outreach.Place.Id">
+                            @Html.DisplayFor(modelItem => item.Time)
                         </a>
                     </td>
                     <td>
