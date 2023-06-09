@@ -86,6 +86,7 @@ public class ApplicationDbContext : DbContext
         builder.Entity<Models.Outreach>();
         builder.Entity<Models.Event>();
         builder.Entity<Models.SecondaryContact>();
+        builder.Entity<Models.PdfFile>();
         builder.Entity<Models.Status>();
     }
     #endregion
