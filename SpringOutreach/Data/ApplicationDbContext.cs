@@ -30,12 +30,12 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Place>().HasOne(x => x.Contact).WithOne(x => x.Place).HasForeignKey<Contact>(x => x.PlaceId).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Place>().HasMany(x => x.SecondaryContacts).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Place>().HasMany(x => x.PlaceLinks).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Place>().HasOne(x => x.PlaceType).WithMany(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Place>().HasMany(x => x.Outreaches).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Place>().HasMany(x => x.SecondaryContacts).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Place>().HasMany(x => x.PlaceLinks).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Place>().HasOne(x => x.PlaceType).WithMany(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Place>().HasMany(x => x.Outreaches).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
         //builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
 
         builder.Entity<Place>().HasData(
