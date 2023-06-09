@@ -36,7 +36,7 @@ public class ApplicationDbContext : DbContext
         builder.Entity<Place>().HasMany(x => x.Outreaches).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
         builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
         builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
 
         builder.Entity<Place>().HasData(
             new Place { Id = 1, Name = "Jahu Thun", City = "Thun", Canton = "Bern", Adress = "Burgfeldweg 13", PlaceTypeId = 1 },
