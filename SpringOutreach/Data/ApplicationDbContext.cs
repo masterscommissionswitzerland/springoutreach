@@ -31,6 +31,7 @@ public class ApplicationDbContext : DbContext
     {
         builder.Entity<Place>().HasOne(x => x.Contact).WithOne(x => x.Place).HasForeignKey<Contact>(x => x.PlaceId).OnDelete(DeleteBehavior.Cascade);
         //builder.Entity<Place>().HasMany(x => x.SecondaryContacts).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Place>().HasMany(x => x.PlaceLinks).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
         //builder.Entity<Place>().HasOne(x => x.PlaceType).WithMany(x => x.Place).OnDelete(DeleteBehavior.Cascade);
         //builder.Entity<Place>().HasMany(x => x.Outreaches).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
         //builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
