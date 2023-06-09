@@ -29,7 +29,14 @@ public class ApplicationDbContext : DbContext
     #region Required
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Place>().HasOne(x => x.Contact).WithOne(x => x.Place).HasForeignKey<Contact>(x => x.PlaceId);
+        builder.Entity<Place>().HasOne(x => x.Contact).WithOne(x => x.Place).HasForeignKey<Contact>(x => x.PlaceId).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Place>().HasMany(x => x.SecondaryContacts).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Place>().HasMany(x => x.PlaceLinks).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Place>().HasOne(x => x.PlaceType).WithMany(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Place>().HasMany(x => x.Outreaches).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
 
         builder.Entity<Place>().HasData(
             new Place { Id = 1, Name = "Jahu Thun", City = "Thun", Canton = "Bern", Adress = "Burgfeldweg 13", PlaceTypeId = 1 },
@@ -80,7 +87,6 @@ public class ApplicationDbContext : DbContext
         builder.Entity<Models.Event>();
         builder.Entity<Models.SecondaryContact>();
         builder.Entity<Models.Status>();
-
     }
     #endregion
 }

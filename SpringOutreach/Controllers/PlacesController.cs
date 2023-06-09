@@ -307,6 +307,7 @@ namespace SpringOutreach.Controllers
                 return Problem("Entity set 'ApplicationDbContext.Place'  is null.");
             }
             var place = await _context.Place.FindAsync(id);
+
             if (place != null)
             {
                 _context.Place.Remove(place);
