@@ -49,9 +49,9 @@ public class ApplicationDbContext : DbContext
         builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach)
             .HasForeignKey(x => x.OutreachId)
             .OnDelete(DeleteBehavior.Cascade);
-        builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach)
-            .HasForeignKey(x => x.OutreachId)
-            .OnDelete(DeleteBehavior.Cascade);
+        //builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach)
+        //    .HasForeignKey(x => x.OutreachId)
+        //    .OnDelete(DeleteBehavior.Cascade);
         builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach)
             .HasForeignKey(x => x.StatusId)
             .OnDelete(DeleteBehavior.Restrict);
