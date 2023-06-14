@@ -49,9 +49,9 @@ public class ApplicationDbContext : DbContext
         builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach)
             .HasForeignKey(x => x.OutreachId)
             .OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach)
-        //    .HasForeignKey(x => x.OutreachId)
-        //    .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach)
+            .HasForeignKey(x => x.OutreachId)
+            .OnDelete(DeleteBehavior.Cascade);
         builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach)
             .HasForeignKey(x => x.StatusId)
             .OnDelete(DeleteBehavior.Restrict);
@@ -104,7 +104,6 @@ public class ApplicationDbContext : DbContext
         builder.Entity<Models.Outreach>();
         builder.Entity<Models.Event>();
         builder.Entity<Models.SecondaryContact>();
-        builder.Entity<Models.PdfFile>();
         builder.Entity<Models.Status>();
     }
     #endregion
