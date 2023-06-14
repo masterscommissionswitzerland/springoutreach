@@ -31,14 +31,14 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 WebApplication app = builder.Build();
 
 // Migrate latest database changes during startup
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider
-        .GetRequiredService<ApplicationDbContext>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider
+//        .GetRequiredService<ApplicationDbContext>();
 
-    // Here is the migration executed 
-    dbContext.Database.Migrate();
-}
+//    // Here is the migration executed 
+//    dbContext.Database.Migrate();
+//}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
