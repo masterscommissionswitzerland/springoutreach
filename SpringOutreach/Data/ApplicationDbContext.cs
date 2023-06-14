@@ -25,18 +25,36 @@ public class ApplicationDbContext : DbContext
     public virtual DbSet<SpringOutreach.Models.PlaceLink> PlaceLink { get; set; }
     public virtual DbSet<SpringOutreach.Models.Event> Event { get; set; }
     public virtual DbSet<SpringOutreach.Models.Status> Status { get; set; }
+    public virtual DbSet<SpringOutreach.Models.PlaceType> PlaceTypes { get; set; }
 
     #region Required
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Place>().HasOne(x => x.Contact).WithOne(x => x.Place).HasForeignKey<Contact>(x => x.PlaceId).OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Place>().HasMany(x => x.SecondaryContacts).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Place>().HasMany(x => x.PlaceLinks).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Place>().HasOne(x => x.PlaceType).WithMany(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Place>().HasMany(x => x.Outreaches).WithOne(x => x.Place).OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
-        //builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Place>().HasOne(x => x.Contact).WithOne(x => x.Place)
+            .HasForeignKey<Contact>(x => x.PlaceId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<SecondaryContact>().HasOne(x => x.Place).WithMany(x => x.SecondaryContacts)
+            .HasForeignKey(x => x.PlaceId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<PlaceLink>().HasOne(x => x.Place).WithMany(x => x.PlaceLinks)
+            .HasForeignKey(x => x.PlaceId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Outreach>().HasOne(x => x.Place).WithMany(x => x.Outreaches)
+            .HasForeignKey(x => x.PlaceId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Place>().HasOne(x => x.PlaceType).WithMany(x => x.Place)
+            .HasForeignKey(x => x.PlaceTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<Outreach>().HasMany(x => x.Events).WithOne(x => x.Outreach)
+            .HasForeignKey(x => x.OutreachId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Outreach>().HasMany(x => x.PdfFile).WithOne(x => x.Outreach)
+            .HasForeignKey(x => x.OutreachId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<Outreach>().HasOne(x => x.Status).WithMany(x => x.Outreach)
+            .HasForeignKey(x => x.StatusId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.Entity<Place>().HasData(
             new Place { Id = 1, Name = "Jahu Thun", City = "Thun", Canton = "Bern", Adress = "Burgfeldweg 13", PlaceTypeId = 1 },
