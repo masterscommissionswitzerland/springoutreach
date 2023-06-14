@@ -20,7 +20,7 @@ IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("ApplicationDbContext")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 // <ms_docrefv_add_default_controller_for_sign-in-out>
 
