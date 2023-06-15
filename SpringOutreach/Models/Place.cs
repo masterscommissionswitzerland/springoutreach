@@ -8,7 +8,6 @@ namespace SpringOutreach.Models
     public class Place
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Display(Name = "Institution Name")]

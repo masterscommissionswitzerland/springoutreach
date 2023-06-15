@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpringOutreach.Models
 {
 	public class Contact
 	{
-		public int Id { get; set; }
+		[Key]
+        public int Id { get; set; }
 
         [Display(Name = "Contact")]
         public string? Name { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SpringOutreach.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,9 +18,9 @@ namespace SpringOutreach.Migrations
                 name: "PlaceType",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,9 +31,9 @@ namespace SpringOutreach.Migrations
                 name: "Position",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,9 +44,9 @@ namespace SpringOutreach.Migrations
                 name: "Status",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,15 +57,15 @@ namespace SpringOutreach.Migrations
                 name: "Place",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    Canton = table.Column<string>(type: "TEXT", nullable: true),
-                    Adress = table.Column<string>(type: "TEXT", nullable: true),
-                    PlaceNote = table.Column<string>(type: "TEXT", nullable: true),
-                    PlaceConnection = table.Column<string>(type: "TEXT", nullable: true),
-                    PlaceTypeId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    Canton = table.Column<string>(type: "text", nullable: true),
+                    Adress = table.Column<string>(type: "text", nullable: true),
+                    PlaceNote = table.Column<string>(type: "text", nullable: true),
+                    PlaceConnection = table.Column<string>(type: "text", nullable: true),
+                    PlaceTypeId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,14 +82,14 @@ namespace SpringOutreach.Migrations
                 name: "Contact",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Mail = table.Column<string>(type: "TEXT", nullable: true),
-                    Phone = table.Column<string>(type: "TEXT", nullable: true),
-                    ResponsibleFor = table.Column<string>(type: "TEXT", nullable: true),
-                    PositionId = table.Column<int>(type: "INTEGER", nullable: true),
-                    PlaceId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Mail = table.Column<string>(type: "text", nullable: true),
+                    Phone = table.Column<string>(type: "text", nullable: true),
+                    ResponsibleFor = table.Column<string>(type: "text", nullable: true),
+                    PositionId = table.Column<int>(type: "integer", nullable: true),
+                    PlaceId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -110,17 +111,17 @@ namespace SpringOutreach.Migrations
                 name: "Outreach",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    InternContact = table.Column<string>(type: "TEXT", nullable: true),
-                    InternResponsible = table.Column<string>(type: "TEXT", nullable: true),
-                    StringId = table.Column<string>(type: "TEXT", nullable: true),
-                    Year = table.Column<int>(type: "INTEGER", nullable: true),
-                    Note = table.Column<string>(type: "TEXT", nullable: true),
-                    StartDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    EndDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    PlaceId = table.Column<int>(type: "INTEGER", nullable: true),
-                    StatusId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    InternContact = table.Column<string>(type: "text", nullable: true),
+                    InternResponsible = table.Column<string>(type: "text", nullable: true),
+                    StringId = table.Column<string>(type: "text", nullable: true),
+                    Year = table.Column<int>(type: "integer", nullable: true),
+                    Note = table.Column<string>(type: "text", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    PlaceId = table.Column<int>(type: "integer", nullable: true),
+                    StatusId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -143,10 +144,10 @@ namespace SpringOutreach.Migrations
                 name: "PlaceLink",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Link = table.Column<string>(type: "TEXT", nullable: true),
-                    PlaceId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Link = table.Column<string>(type: "text", nullable: true),
+                    PlaceId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -163,15 +164,15 @@ namespace SpringOutreach.Migrations
                 name: "SecondaryContact",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Mail = table.Column<string>(type: "TEXT", nullable: true),
-                    Phone = table.Column<string>(type: "TEXT", nullable: true),
-                    ResponsibleFor = table.Column<string>(type: "TEXT", nullable: true),
-                    SecondaryContactPositionId = table.Column<int>(type: "INTEGER", nullable: true),
-                    StringId = table.Column<string>(type: "TEXT", nullable: true),
-                    PlaceId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Mail = table.Column<string>(type: "text", nullable: true),
+                    Phone = table.Column<string>(type: "text", nullable: true),
+                    ResponsibleFor = table.Column<string>(type: "text", nullable: true),
+                    SecondaryContactPositionId = table.Column<int>(type: "integer", nullable: true),
+                    StringId = table.Column<string>(type: "text", nullable: true),
+                    PlaceId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -193,16 +194,16 @@ namespace SpringOutreach.Migrations
                 name: "Event",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: true),
-                    Note = table.Column<string>(type: "TEXT", nullable: true),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    OutreachId = table.Column<int>(type: "INTEGER", nullable: true),
-                    Contact = table.Column<string>(type: "TEXT", nullable: true),
-                    StringId = table.Column<string>(type: "TEXT", nullable: true),
-                    Time = table.Column<string>(type: "TEXT", nullable: true),
-                    IsInputRequired = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Note = table.Column<string>(type: "text", nullable: true),
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    OutreachId = table.Column<int>(type: "integer", nullable: true),
+                    Contact = table.Column<string>(type: "text", nullable: true),
+                    StringId = table.Column<string>(type: "text", nullable: true),
+                    Time = table.Column<string>(type: "text", nullable: true),
+                    IsInputRequired = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -219,11 +220,11 @@ namespace SpringOutreach.Migrations
                 name: "PdfFile",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    FileBytes = table.Column<byte[]>(type: "BYTEA", nullable: true),
-                    FileName = table.Column<string>(type: "TEXT", nullable: true),
-                    OutreachId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FileBytes = table.Column<byte[]>(type: "bytea", nullable: true),
+                    FileName = table.Column<string>(type: "text", nullable: true),
+                    OutreachId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {

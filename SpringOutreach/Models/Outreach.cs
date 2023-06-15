@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using SpringOutreach.CustomAttribute;
 
 namespace SpringOutreach.Models
@@ -7,7 +8,7 @@ namespace SpringOutreach.Models
 	public class Outreach
 	{
 		[Key]
-		public int Id { get; set; }
+        public int Id { get; set; }
 
 		[Display(Name = "Main Contact")]
 		public string? InternContact { get; set; }
