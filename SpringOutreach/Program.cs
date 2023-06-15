@@ -30,15 +30,15 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // <ms_docref_enable_authz_capabilities>
 WebApplication app = builder.Build();
 
-// Migrate latest database changes during startup
-//using (var scope = app.Services.CreateScope())
-//{
-//    var dbContext = scope.ServiceProvider
-//        .GetRequiredService<ApplicationDbContext>();
+Migrate latest database changes during startup
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<ApplicationDbContext>();
 
-//    // Here is the migration executed 
-//    dbContext.Database.Migrate();
-//}
+    // Here is the migration executed 
+    dbContext.Database.Migrate();
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
