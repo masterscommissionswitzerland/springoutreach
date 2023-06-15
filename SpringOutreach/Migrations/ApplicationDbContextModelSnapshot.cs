@@ -56,26 +56,6 @@ namespace SpringOutreach.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("Contact");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Mail = "christina.wenger@jahu.info",
-                            Name = "Christina Wenger",
-                            Phone = "078 941 66 02",
-                            PlaceId = 1,
-                            PositionId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Mail = "magdalene.soundso@oasis.ch",
-                            Name = "Magdalene Soundso",
-                            Phone = "079 777 02 32",
-                            PlaceId = 2,
-                            PositionId = 1
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.Event", b =>
@@ -115,17 +95,6 @@ namespace SpringOutreach.Migrations
                     b.HasIndex("OutreachId");
 
                     b.ToTable("Event");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Contact = "Joëlle Wenger",
-                            Note = "Jugendgruppenabend",
-                            OutreachId = 1,
-                            StringId = "stringId5",
-                            Title = "LightFactory"
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.Outreach", b =>
@@ -170,52 +139,6 @@ namespace SpringOutreach.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("Outreach");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            InternContact = "Nicola Beck",
-                            InternResponsible = "Eleosa Zürcher",
-                            Note = "Wir haben das und das gemacht.",
-                            PlaceId = 1,
-                            StatusId = 1,
-                            StringId = "stringId",
-                            Year = 2021
-                        },
-                        new
-                        {
-                            Id = 2,
-                            InternContact = "Micha Wenger",
-                            InternResponsible = "Elina Josi",
-                            Note = "Diese Jahr haben wir etwas anders gemacht.",
-                            PlaceId = 1,
-                            StatusId = 2,
-                            StringId = "stringId1",
-                            Year = 2022
-                        },
-                        new
-                        {
-                            Id = 3,
-                            InternContact = "Janis Volz",
-                            InternResponsible = "Sophia Krebs",
-                            Note = "Hier haben wir das getan.",
-                            PlaceId = 2,
-                            StatusId = 2,
-                            StringId = "stringId2",
-                            Year = 2021
-                        },
-                        new
-                        {
-                            Id = 4,
-                            InternContact = "Simon Schmidt",
-                            InternResponsible = "Marlene Roth",
-                            Note = "Und im nächsten Jahr das",
-                            PlaceId = 2,
-                            StatusId = 3,
-                            StringId = "stringId3",
-                            Year = 2022
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.PdfFile", b =>
@@ -276,26 +199,6 @@ namespace SpringOutreach.Migrations
                     b.HasIndex("PlaceTypeId");
 
                     b.ToTable("Place");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Adress = "Burgfeldweg 13",
-                            Canton = "Bern",
-                            City = "Thun",
-                            Name = "Jahu Thun",
-                            PlaceTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Adress = "Klosterweg 12",
-                            Canton = "Zug",
-                            City = "Zug",
-                            Name = "Oasis Zug",
-                            PlaceTypeId = 2
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.PlaceLink", b =>
@@ -333,18 +236,6 @@ namespace SpringOutreach.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PlaceType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Title = "Ref"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Title = "Kath"
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.Position", b =>
@@ -361,18 +252,6 @@ namespace SpringOutreach.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Position");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Title = "Jugendarbeiter/inn"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Title = "Pfarrer/inn"
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.SecondaryContact", b =>
@@ -411,18 +290,6 @@ namespace SpringOutreach.Migrations
                     b.HasIndex("SecondaryContactPositionId");
 
                     b.ToTable("SecondaryContact");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Mail = "micha.wenger@jahu.info",
-                            Name = "Micha Wenger",
-                            Phone = "078 324 23 02",
-                            PlaceId = 1,
-                            SecondaryContactPositionId = 1,
-                            StringId = "stringId4"
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.Status", b =>
@@ -439,23 +306,6 @@ namespace SpringOutreach.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Status");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Open"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Asked"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Accepted"
-                        });
                 });
 
             modelBuilder.Entity("SpringOutreach.Models.Contact", b =>

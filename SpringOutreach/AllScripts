@@ -111,48 +111,6 @@ CREATE TABLE "PdfFile" (
     CONSTRAINT "FK_PdfFile_Outreach_OutreachId" FOREIGN KEY ("OutreachId") REFERENCES "Outreach" ("Id") ON DELETE CASCADE
 );
 
-INSERT INTO "PlaceType" ("Id", "Title")
-VALUES (1, 'Ref');
-INSERT INTO "PlaceType" ("Id", "Title")
-VALUES (2, 'Kath');
-
-INSERT INTO "Position" ("Id", "Title")
-VALUES (1, 'Jugendarbeiter/inn');
-INSERT INTO "Position" ("Id", "Title")
-VALUES (2, 'Pfarrer/inn');
-
-INSERT INTO "Status" ("Id", "Name")
-VALUES (1, 'Open');
-INSERT INTO "Status" ("Id", "Name")
-VALUES (2, 'Asked');
-INSERT INTO "Status" ("Id", "Name")
-VALUES (3, 'Accepted');
-
-INSERT INTO "Place" ("Id", "Adress", "Canton", "City", "Name", "PlaceConnection", "PlaceNote", "PlaceTypeId")
-VALUES (1, 'Burgfeldweg 13', 'Bern', 'Thun', 'Jahu Thun', NULL, NULL, 1);
-INSERT INTO "Place" ("Id", "Adress", "Canton", "City", "Name", "PlaceConnection", "PlaceNote", "PlaceTypeId")
-VALUES (2, 'Klosterweg 12', 'Zug', 'Zug', 'Oasis Zug', NULL, NULL, 2);
-
-INSERT INTO "Contact" ("Id", "Mail", "Name", "Phone", "PlaceId", "PositionId", "ResponsibleFor")
-VALUES (1, 'christina.wenger@jahu.info', 'Christina Wenger', '078 941 66 02', 1, 2, NULL);
-INSERT INTO "Contact" ("Id", "Mail", "Name", "Phone", "PlaceId", "PositionId", "ResponsibleFor")
-VALUES (2, 'magdalene.soundso@oasis.ch', 'Magdalene Soundso', '079 777 02 32', 2, 1, NULL);
-
-INSERT INTO "Outreach" ("Id", "EndDate", "InternContact", "InternResponsible", "Note", "PlaceId", "StartDate", "StatusId", "StringId", "Year")
-VALUES (1, NULL, 'Nicola Beck', 'Eleosa Zürcher', 'Wir haben das und das gemacht.', 1, NULL, 1, 'stringId', 2021);
-INSERT INTO "Outreach" ("Id", "EndDate", "InternContact", "InternResponsible", "Note", "PlaceId", "StartDate", "StatusId", "StringId", "Year")
-VALUES (2, NULL, 'Micha Wenger', 'Elina Josi', 'Diese Jahr haben wir etwas anders gemacht.', 1, NULL, 2, 'stringId1', 2022);
-INSERT INTO "Outreach" ("Id", "EndDate", "InternContact", "InternResponsible", "Note", "PlaceId", "StartDate", "StatusId", "StringId", "Year")
-VALUES (3, NULL, 'Janis Volz', 'Sophia Krebs', 'Hier haben wir das getan.', 2, NULL, 2, 'stringId2', 2021);
-INSERT INTO "Outreach" ("Id", "EndDate", "InternContact", "InternResponsible", "Note", "PlaceId", "StartDate", "StatusId", "StringId", "Year")
-VALUES (4, NULL, 'Simon Schmidt', 'Marlene Roth', 'Und im nächsten Jahr das', 2, NULL, 3, 'stringId3', 2022);
-
-INSERT INTO "SecondaryContact" ("Id", "Mail", "Name", "Phone", "PlaceId", "ResponsibleFor", "SecondaryContactPositionId", "StringId")
-VALUES (1, 'micha.wenger@jahu.info', 'Micha Wenger', '078 324 23 02', 1, NULL, 1, 'stringId4');
-
-INSERT INTO "Event" ("Id", "Contact", "Date", "IsInputRequired", "Note", "OutreachId", "StringId", "Time", "Title")
-VALUES (1, 'Joëlle Wenger', NULL, NULL, 'Jugendgruppenabend', 1, 'stringId5', NULL, 'LightFactory');
-
 CREATE UNIQUE INDEX "IX_Contact_PlaceId" ON "Contact" ("PlaceId");
 
 CREATE INDEX "IX_Contact_PositionId" ON "Contact" ("PositionId");
@@ -173,57 +131,8 @@ CREATE INDEX "IX_SecondaryContact_PlaceId" ON "SecondaryContact" ("PlaceId");
 
 CREATE INDEX "IX_SecondaryContact_SecondaryContactPositionId" ON "SecondaryContact" ("SecondaryContactPositionId");
 
-SELECT setval(
-    pg_get_serial_sequence('"PlaceType"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "PlaceType") + 1,
-        nextval(pg_get_serial_sequence('"PlaceType"', 'Id'))),
-    false);
-SELECT setval(
-    pg_get_serial_sequence('"Position"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "Position") + 1,
-        nextval(pg_get_serial_sequence('"Position"', 'Id'))),
-    false);
-SELECT setval(
-    pg_get_serial_sequence('"Status"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "Status") + 1,
-        nextval(pg_get_serial_sequence('"Status"', 'Id'))),
-    false);
-SELECT setval(
-    pg_get_serial_sequence('"Place"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "Place") + 1,
-        nextval(pg_get_serial_sequence('"Place"', 'Id'))),
-    false);
-SELECT setval(
-    pg_get_serial_sequence('"Contact"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "Contact") + 1,
-        nextval(pg_get_serial_sequence('"Contact"', 'Id'))),
-    false);
-SELECT setval(
-    pg_get_serial_sequence('"Outreach"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "Outreach") + 1,
-        nextval(pg_get_serial_sequence('"Outreach"', 'Id'))),
-    false);
-SELECT setval(
-    pg_get_serial_sequence('"SecondaryContact"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "SecondaryContact") + 1,
-        nextval(pg_get_serial_sequence('"SecondaryContact"', 'Id'))),
-    false);
-SELECT setval(
-    pg_get_serial_sequence('"Event"', 'Id'),
-    GREATEST(
-        (SELECT MAX("Id") FROM "Event") + 1,
-        nextval(pg_get_serial_sequence('"Event"', 'Id'))),
-    false);
-
 INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
-VALUES ('20230615080853_Init', '7.0.5');
+VALUES ('20230615082052_Init', '7.0.5');
 
 COMMIT;
 
