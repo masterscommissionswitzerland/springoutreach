@@ -22,7 +22,7 @@ namespace SpringOutreach.Controllers
         // GET: Outreaches
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Outreach.Include(o => o.Place);
+            var applicationDbContext = _context.Outreach.Include(o => o.Place).Include(o => o.Status);
             return View(await applicationDbContext.ToListAsync());
         }
 

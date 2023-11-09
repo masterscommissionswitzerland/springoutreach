@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Year)
             </th>
+            <th>
+                Status
+            </th>
             <th class="no-sort"></th>
         </tr>
     </thead>
@@ -46,6 +49,11 @@
                 <td>
                     <a asp-controller="Places" asp-action="Details" asp-route-id="@item.PlaceId">
                         @Html.DisplayFor(modelItem => item.Year)
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Places" asp-action="Details" asp-route-id="@item.PlaceId">
+                        @Html.DisplayFor(modelItem => item.Status.Name)
                     </a>
                 </td>
                 <td class="no-sort">

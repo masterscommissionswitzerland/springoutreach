@@ -36,9 +36,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Outreaches)
                 </th>
-                <th>
-                    Status
-                </th>
                 <th class="no-sort"></th>
             </tr>
         </thead>
@@ -71,14 +68,6 @@
                         {
                             <a asp-action="Details" asp-route-id="@item.Id">
                                 @Html.DisplayFor(modelItem => year.Year)
-                            </a>
-                        }
-                    </td>
-                    <td>
-                        @foreach (var status in item.Outreaches)
-                        {
-                            <a asp-action="Details" asp-route-id="@item.Id">
-                                @Html.DisplayFor(modelItem => status.Status.Name)
                             </a>
                         }
                     </td>
