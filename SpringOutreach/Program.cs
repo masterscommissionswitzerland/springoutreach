@@ -36,7 +36,7 @@ WebApplication app = builder.Build();
 //    var dbContext = scope.ServiceProvider
 //        .GetRequiredService<ApplicationDbContext>();
 
-//    // Here is the migration executed 
+//    // Here the migration gets executed 
 //    dbContext.Database.Migrate();
 //}
 
