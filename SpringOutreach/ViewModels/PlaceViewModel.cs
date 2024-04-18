@@ -22,6 +22,9 @@ namespace SpringOutreach.ViewModels
 
         public string? Note { get; set; }
 
+        [Display(Name = "Last Contact")]
+        public string? LastContact { get; set; }
+
         [Display(Name = "Kind")]
         public string? SetPlaceType { get; set; }
 

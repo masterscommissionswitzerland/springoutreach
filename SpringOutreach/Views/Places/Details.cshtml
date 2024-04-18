@@ -70,6 +70,14 @@
                     </tr>
                     <tr>
                         <th>
+                            @Html.DisplayNameFor(model => model.LastContact)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LastContact)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             @Html.DisplayNameFor(model => model.PlaceConnection)
                         </th>
                         <td>
@@ -300,14 +308,6 @@
                                         </th>
                                         <td>
                                             @item.Note
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            Last Contact
-                                        </th>
-                                        <td>
-                                            @item.LastContact
                                         </td>
                                     </tr>
                                 </tbody>

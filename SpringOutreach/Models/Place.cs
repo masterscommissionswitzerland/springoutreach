@@ -23,6 +23,9 @@ namespace SpringOutreach.Models
 
         public string? PlaceConnection { get; set; }
 
+        [Display(Name = "Last Contact")]
+        public string? LastContact { get; set; }
+
         public int? PlaceTypeId { get; set; }
 
         public PlaceType? PlaceType { get; set; }

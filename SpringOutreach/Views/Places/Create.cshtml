@@ -45,6 +45,11 @@
                     <span asp-validation-for="PlaceConnection" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="LastContact" class="control-label"></label>
+                    <input asp-for="LastContact" class="form-control" />
+                    <span asp-validation-for="LastContact" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <label asp-for="SetPriority" class="control-label"></label>
                     <select asp-for="PriorityId"
                             asp-items="@(new SelectList(Model.Priorities, nameof(Priority.Id), nameof(Priority.Level)))" class="form-select">

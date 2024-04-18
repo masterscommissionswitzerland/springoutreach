@@ -24,9 +24,6 @@ namespace SpringOutreach.Models
         [Display(Name = "Notes")]
 		public string? Note { get; set; }
 
-        [Display(Name = "Last Contact")]
-        public string? LastContact { get; set; }
-
         [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
 

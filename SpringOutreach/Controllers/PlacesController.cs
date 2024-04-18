@@ -120,6 +120,7 @@ namespace SpringOutreach.Controllers
                 Adress = place.Adress,
                 SetPlaceType = place.PlaceType.Title,
                 SetPriority = place.Priority.Level,
+                LastContact = place.LastContact,
                 Contact = place.Contact,
                 Outreaches = place.Outreaches,
                 SecondaryContacts = place.SecondaryContacts,
@@ -177,7 +178,8 @@ namespace SpringOutreach.Controllers
                     PriorityId = vm.PriorityId,
                     PlaceConnection = vm.PlaceConnection,
                     PlaceNote = vm.PlaceNote,
-                    PlaceTypeId = vm.PlaceTypeId
+                    PlaceTypeId = vm.PlaceTypeId,
+                    LastContact = vm.LastContact
                 };
 
                 _context.Add(place);
@@ -223,6 +225,7 @@ namespace SpringOutreach.Controllers
                 City = place.City,
                 Canton = place.Canton,
                 Adress = place.Adress,
+                LastContact = place.LastContact,
                 PriorityId = place.PriorityId,
                 Priorities = _context.Priority.ToList(),
                 PlaceTypeId = place.PlaceTypeId,
@@ -269,6 +272,7 @@ namespace SpringOutreach.Controllers
                     place.Adress = vm.Adress;
                     place.PriorityId = vm.PriorityId;
                     place.PlaceTypeId = vm.PlaceTypeId;
+                    place.LastContact = vm.LastContact;
                     place.Contact.Name = vm.ContactName;
                     place.Contact.Mail = vm.ContactMail;
                     place.Contact.Phone = vm.ContactPhone;
