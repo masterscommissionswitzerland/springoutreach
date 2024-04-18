@@ -75,6 +75,7 @@ namespace SpringOutreach.Controllers
                     InternResponsible = vm.InternResponsible,
                     StringId = stringId,
                     Note = vm.Note,
+                    LastContact = vm.LastContact,
                     Year = vm.Year,
                     StartDate = vm.StartDate,
                     EndDate = vm.EndDate,
@@ -109,6 +110,7 @@ namespace SpringOutreach.Controllers
                 InternContact = outreach.InternContact,
                 InternResponsible = outreach.InternResponsible,
                 Note = outreach.Note,
+                LastContact = outreach.LastContact,
                 Year = outreach.Year,
                 StartDate = outreach.StartDate,
                 EndDate = outreach.EndDate,
@@ -145,6 +147,7 @@ namespace SpringOutreach.Controllers
                     outreach.InternResponsible = vm.InternResponsible;
                     outreach.Year = vm.Year;
                     outreach.Note = vm.Note;
+                    outreach.LastContact = vm.LastContact;
                     outreach.StartDate = vm.StartDate;
                     outreach.EndDate = vm.EndDate;
                     outreach.StatusId = vm.StatusId;

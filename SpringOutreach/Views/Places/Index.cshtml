@@ -34,6 +34,9 @@
                     @Html.DisplayNameFor(model => model.Canton)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Priority)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Outreaches)
                 </th>
                 <th class="no-sort"></th>
@@ -61,6 +64,11 @@
                     <td>
                         <a asp-action="Details" asp-route-id="@item.Id">
                             @Html.DisplayFor(modelItem => item.Canton)
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            @Html.DisplayFor(modelItem => item.Priority.Level)
                         </a>
                     </td>
                     <td>

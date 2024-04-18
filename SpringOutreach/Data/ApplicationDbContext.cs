@@ -1,7 +1,6 @@
 using System.Reflection.Emit;
 using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using SpringOutreach.Models;
@@ -19,6 +18,7 @@ public class ApplicationDbContext : DbContext
     public virtual DbSet<SpringOutreach.Models.Contact> Contact { get; set; }
     public virtual DbSet<SpringOutreach.Models.Position> Position { get; set; }
     public virtual DbSet<SpringOutreach.Models.PlaceType> Type { get; set; }
+    public virtual DbSet<SpringOutreach.Models.Priority> Priority { get; set; }
     public virtual DbSet<SpringOutreach.Models.Outreach> Outreach { get; set; }
     public virtual DbSet<SpringOutreach.Models.PdfFile> PdfFile { get; set; }
     public virtual DbSet<SpringOutreach.Models.SecondaryContact> SecondaryContact { get; set; }

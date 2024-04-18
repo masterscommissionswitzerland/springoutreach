@@ -69,6 +69,13 @@ namespace SpringOutreach.ViewModels
         public string? PlaceConnection { get; set; }
 
         public Outreach? CurrentOutreach { get; set; }
+
+        [Display(Name = "Priority")]
+        public string? SetPriority { get; set; }
+
+        public int? PriorityId { get; set; }
+
+        [Display(Name = "Priority")]
+        public List<Priority>? Priorities { get; set; }
     }
 }
-

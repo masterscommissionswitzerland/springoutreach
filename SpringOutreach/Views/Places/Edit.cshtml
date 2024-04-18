@@ -44,6 +44,12 @@
                     <span asp-validation-for="PlaceConnection" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="SetPriority" class="control-label"></label>
+                    <select asp-for="PriorityId"
+                            asp-items="@(new SelectList(Model.Priorities, nameof(Priority.Id), nameof(Priority.Level)))" class="form-select">
+                    </select>
+                </div>
+                <div class="form-group">
                     <label asp-for="PlaceNote" class="control-label"></label>
                     <textarea class="form-control" rows="2" asp-for="PlaceNote"></textarea>
                     <span asp-validation-for="PlaceNote" class="text-danger"></span>

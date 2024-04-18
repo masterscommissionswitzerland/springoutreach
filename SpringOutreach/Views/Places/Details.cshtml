@@ -78,6 +78,14 @@
                     </tr>
                     <tr>
                         <th>
+                            @Html.DisplayNameFor(model => model.SetPriority)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.SetPriority)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             @Html.DisplayNameFor(model => model.PlaceNote)
                         </th>
                         <td>
@@ -292,6 +300,14 @@
                                         </th>
                                         <td>
                                             @item.Note
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Last Contact
+                                        </th>
+                                        <td>
+                                            @item.LastContact
                                         </td>
                                     </tr>
                                 </tbody>

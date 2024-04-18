@@ -36,6 +36,11 @@ namespace SpringOutreach.Models
 
         [Display(Name = "Links")]
         public ICollection<PlaceLink>? PlaceLinks { get; set; }
+
+        public int? PriorityId { get; set; }
+
+        [Display(Name = "Priority")]
+        public Priority? Priority { get; set; }
     }
 }
 

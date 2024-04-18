@@ -3,14 +3,12 @@ using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Web;
-using Microsoft.Identity.Web.UI;
 using SpringOutreach.Controllers;
 using SpringOutreach.Data;
 using Microsoft.Extensions.Configuration;
 // </ms_docref_import_types>
 
-// <ms_docref_add_msal>
+// <ms_docref_add_msal>s
 
 
 var builder = WebApplication.CreateBuilder(args);

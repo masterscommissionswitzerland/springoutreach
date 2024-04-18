@@ -25,6 +25,7 @@ namespace SpringOutreach.Controllers
             var places = await _context.Place
                 .Include(t => t.PlaceType)
                 .Include(t => t.Contact)
+                .Include(t => t.Priority)
                 .Include(t => t.Outreaches)
                 .ThenInclude(t => t.Status)
                 .Select(x => new Place
@@ -33,6 +34,8 @@ namespace SpringOutreach.Controllers
                     City = x.City,
                     Canton = x.Canton,
                     Contact = x.Contact,
+                    PriorityId = x.PriorityId,
+                    Priority = x.Priority,
                     Id = x.Id,
                     Outreaches = new List<Outreach> { x.Outreaches.OrderByDescending(x => x.Year).FirstOrDefault() }
                 })
@@ -94,6 +97,7 @@ namespace SpringOutreach.Controllers
 
             var place = await _context.Place
                 .Include(t => t.PlaceType)
+                .Include(t => t.Priority)
                 .Include(t => t.Contact)
                 .ThenInclude(m => m.Position)
                 .Include(t => t.SecondaryContacts)
@@ -115,6 +119,7 @@ namespace SpringOutreach.Controllers
                 Canton = place.Canton,
                 Adress = place.Adress,
                 SetPlaceType = place.PlaceType.Title,
+                SetPriority = place.Priority.Level,
                 Contact = place.Contact,
                 Outreaches = place.Outreaches,
                 SecondaryContacts = place.SecondaryContacts,
@@ -147,6 +152,9 @@ namespace SpringOutreach.Controllers
                 Position = _context.Position
                 .OrderBy(x => x.Id)
                 .ToList(),
+                Priorities = _context.Priority
+                .OrderBy(x => x.Id)
+                .ToList()
             };
             return View(vm);
         }
@@ -166,6 +174,7 @@ namespace SpringOutreach.Controllers
                     City = vm.City, 
                     Canton = vm.Canton,
                     Adress = vm.Adress,
+                    PriorityId = vm.PriorityId,
                     PlaceConnection = vm.PlaceConnection,
                     PlaceNote = vm.PlaceNote,
                     PlaceTypeId = vm.PlaceTypeId
@@ -204,6 +213,7 @@ namespace SpringOutreach.Controllers
                 .Include(t => t.Contact)
                 .ThenInclude(t => t.Position)
                 .Include(t => t.PlaceType)
+                .Include(t => t.Priority)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             var vm = new PlaceViewModel()
@@ -213,6 +223,8 @@ namespace SpringOutreach.Controllers
                 City = place.City,
                 Canton = place.Canton,
                 Adress = place.Adress,
+                PriorityId = place.PriorityId,
+                Priorities = _context.Priority.ToList(),
                 PlaceTypeId = place.PlaceTypeId,
                 PlaceTypes = _context.Type.ToList(),
                 Contact = place.Contact,
@@ -248,12 +260,14 @@ namespace SpringOutreach.Controllers
                         .Include(t => t.Contact)
                         .ThenInclude(t => t.Position)
                         .Include(t => t.PlaceType)
+                        .Include(t => t.Priority)
                         .FirstOrDefaultAsync(m => m.Id == id);
 
                     place.Name = vm.Name;
                     place.City = vm.City;
                     place.Canton = vm.Canton;
                     place.Adress = vm.Adress;
+                    place.PriorityId = vm.PriorityId;
                     place.PlaceTypeId = vm.PlaceTypeId;
                     place.Contact.Name = vm.ContactName;
                     place.Contact.Mail = vm.ContactMail;
