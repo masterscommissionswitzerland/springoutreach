@@ -229,7 +229,8 @@ namespace SpringOutreach.Controllers
             return View(vm);
         }
 
-        //Upload PDF
+        //Upload
+        //PDF
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upload(OutreachViewModel vm)

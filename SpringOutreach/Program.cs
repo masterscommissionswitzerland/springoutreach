@@ -18,25 +18,25 @@ IEnumerable<string>? initialScopes = builder.Configuration["DownstreamApi:Scopes
 string connectionString = builder.Configuration.GetConnectionString("ApplicationDbContext");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("ApplicationDbContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 // <ms_docrefv_add_default_controller_for_sign-in-out>
 
 builder.Services.AddRazorPages();
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+AppContext.SetSwitch("UseSqlServer.EnableLegacyTimestampBehavior", true);
 
 // <ms_docref_enable_authz_capabilities>
 WebApplication app = builder.Build();
 
 //Migrate latest database changes during startup
-//using (var scope = app.Services.CreateScope())
-//{
-//    var dbContext = scope.ServiceProvider
-//        .GetRequiredService<ApplicationDbContext>();
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<ApplicationDbContext>();
 
-//    // Here the migration gets executed 
-//    dbContext.Database.Migrate();
-//}
+    // Here the migration gets executed 
+    dbContext.Database.Migrate();
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

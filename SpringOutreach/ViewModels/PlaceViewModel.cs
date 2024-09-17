@@ -46,6 +46,7 @@ namespace SpringOutreach.ViewModels
         [Display(Name = "Responsible For")]
         public string? ResponsibleFor { get; set; }
 
+        [Display(Name = "Links")]
         public ICollection<PlaceLink>? PlaceLinks { get; set; }
 
         public ICollection<Outreach>? Outreaches { get; set; } = new List<Outreach>();
