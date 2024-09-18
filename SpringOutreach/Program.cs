@@ -29,14 +29,14 @@ AppContext.SetSwitch("UseSqlServer.EnableLegacyTimestampBehavior", true);
 WebApplication app = builder.Build();
 
 //Migrate latest database changes during startup
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider
-        .GetRequiredService<ApplicationDbContext>();
-
-    // Here the migration gets executed 
-    dbContext.Database.Migrate();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider
+//        .GetRequiredService<ApplicationDbContext>();
+//
+    // Migration gets executed 
+//    dbContext.Database.Migrate();
+//}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
